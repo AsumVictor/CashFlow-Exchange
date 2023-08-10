@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./components/Header.js";
 import {
   HomePage,
   CurrencyDetailPage,
   FavoritePage,
   ConversionPage,
 } from "./Routes.js";
+import PageLayout from "./layout/PageLayout.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Header />}>
+        <Route element={<PageLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/:id" element={<CurrencyDetailPage />} />
           <Route path="/favorite" element={<FavoritePage />} />
