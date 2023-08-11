@@ -5,7 +5,7 @@ import { SinglecurrencyReducer } from './currency/singleCurrency';
 const store = configureStore({
   reducer: {
     allCurrencies: currencyReducer,
-    currency: SinglecurrencyReducer
+    currency: SinglecurrencyReducer,
   },
 });
 

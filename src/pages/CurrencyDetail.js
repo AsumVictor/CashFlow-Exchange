@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { MdArrowBackIosNew } from "react-icons/md";
-import { Link, useParams } from "react-router-dom";
-import SingleExchangeCard from "../components/singleExchangeCard";
-import { useDispatch, useSelector } from "react-redux";
-import { clearAll, getSingleCurrency } from "../redux/currency/singleCurrency";
+import React, { useEffect, useState } from 'react';
+import { MdArrowBackIosNew } from 'react-icons/md';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import SingleExchangeCard from '../components/singleExchangeCard';
+import { getSingleCurrency } from '../redux/currency/singleCurrency';
 import {
   convertMonthAgo,
   convertWeekAgo,
   convertYearAgo,
-} from "../helpers/timeConvert";
-import Loader from "../components/loader";
+} from '../helpers/timeConvert';
+import Loader from '../components/loader';
 
 function CurrencyDetail() {
   const param = useParams();
@@ -17,41 +17,41 @@ function CurrencyDetail() {
   const { data: allCurrencies } = useSelector((state) => state.allCurrencies);
   const currentCurrency = allCurrencies.find((i) => i.code === param.code);
   const { data, isFetching } = useSelector(
-    (state) => state.currency
+    (state) => state.currency,
   );
   const [currentDate, setCurrentDate] = useState({
-    date: "latest",
+    date: 'latest',
     active: 1,
   });
 
   const dates = [
     {
-      label: "Latest",
+      label: 'Latest',
       id: 1,
     },
     {
-      label: "Last week",
+      label: 'Last week',
       id: 2,
     },
     {
-      label: "Last month",
+      label: 'Last month',
       id: 3,
     },
     {
-      label: "Last year",
+      label: 'Last year',
       id: 4,
     },
   ];
   useEffect(() => {
     dispatch(getSingleCurrency({ code: param.code, date: currentDate.date }));
-  }, [currentDate]);
+  }, [dispatch, currentDate, param.code]);
 
   // Handle time
   const handleTimeAgo = (id) => {
     let result = null;
     switch (id) {
       case 1:
-        result = "latest";
+        result = 'latest';
         break;
       case 2:
         result = convertWeekAgo();
@@ -63,7 +63,7 @@ function CurrencyDetail() {
         result = convertYearAgo();
         break;
       default:
-        console.log("Invalid choice.");
+        result = 'latest';
         return;
     }
     setCurrentDate({
@@ -96,7 +96,13 @@ function CurrencyDetail() {
       </div>
 
       <div className="w-full text-[18px] text-white py-2 bg-primary mt-1 flex flex-row gap-1 items-center font-semibold px-10">
-        Exchange rates of {currentCurrency.name} ({currentCurrency.code})
+        Exchange rates of
+        {' '}
+        {currentCurrency.name}
+        {' '}
+        (
+        {currentCurrency.code}
+        )
       </div>
 
       <div className="w-full mt-2 px-2 whitespace-nowrap overflow-x-auto">
@@ -108,8 +114,8 @@ function CurrencyDetail() {
               onClick={() => handleTimeAgo(date.id)}
               className={`${
                 currentDate.active === date.id
-                  ? "bg-white text-primary font-semibold "
-                  : "bg-primary text-white"
+                  ? 'bg-white text-primary font-semibold '
+                  : 'bg-primary text-white'
               } inline-block mx-2 px-3 py-1  rounded-md`}
             >
               {date.label}
@@ -119,7 +125,7 @@ function CurrencyDetail() {
           <input
             type="date"
             name="customDate"
-            max={new Date().toISOString().split("T")[0]}
+            max={new Date().toISOString().split('T')[0]}
             value={currentDate.active === 5 && currentDate.date}
             className="outline-0 rounded-md font-semibold px-2 text-[15px] py-1 text-primary"
             onChange={(e) => {
@@ -145,7 +151,7 @@ function CurrencyDetail() {
             ))
           ) : (
             <div className="h-[5cm] col-span-full text-white w-full flex justify-center items-center">
-              <h2>{`Opps! (: Nothing to display about`}</h2>
+              <h2>Opps! (: Nothing to display about</h2>
             </div>
           )}
         </div>

@@ -10,6 +10,7 @@ function CurrencyCard({ currencyName, currencySymbol }) {
       className="currency-card relative w-full flex justify-center items-center px-2 py-2 h-[6cm]"
     >
       <button
+        type="button"
         className="absolute right-4 top-2"
       >
         <BsArrowRightCircle color="white" size={30} />

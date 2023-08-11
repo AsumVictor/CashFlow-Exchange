@@ -41,15 +41,16 @@
 .dots {
   width: 72px;
   height: 17.3px;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle closest-side at left 8.6px top 50%,
-      #ffffff 90%,
+      #fff 90%,
       #0000
     ),
-    radial-gradient(circle closest-side, #ffffff 90%, #0000),
+    radial-gradient(circle closest-side, #fff 90%, #0000),
     radial-gradient(
       circle closest-side at right 8.6px top 50%,
-      #ffffff 90%,
+      #fff 90%,
       #0000
     );
   background-size: 100% 100%;

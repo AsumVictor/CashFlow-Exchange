@@ -1,5 +1,5 @@
-import React from "react";
-import { BsCurrencyExchange } from "react-icons/bs";
+import React from 'react';
+import { BsCurrencyExchange } from 'react-icons/bs';
 
 function HeroSection() {
   return (

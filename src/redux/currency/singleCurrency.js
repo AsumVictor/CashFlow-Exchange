@@ -1,22 +1,19 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import BASEURL from "../../api/BASEURL";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import BASEURL from '../../api/BASEURL';
 
 export const getSingleCurrency = createAsyncThunk(
-  "singlecurrency/get",
+  'singlecurrency/get',
   async (param) => {
     try {
       const response = await fetch(
-        `${BASEURL}/${param.date}/currencies/${param.code}.json`
+        `${BASEURL}/${param.date}/currencies/${param.code}.json`,
       );
       const data = await response.json();
-      if(typeof data === "object") {
-        
-      }
       const currencyArray = Object.entries(Object.values(data)[1]).map(
         ([code, rate]) => ({
           code,
           rate,
-        })
+        }),
       );
       return currencyArray;
     } catch (error) {
@@ -25,7 +22,7 @@ export const getSingleCurrency = createAsyncThunk(
         : error.message;
       return errorMessage;
     }
-  }
+  },
 );
 
 const initialState = {
@@ -36,40 +33,29 @@ const initialState = {
 };
 
 const SingleCurrencySlice = createSlice({
-  name: "SingleCurrency",
+  name: 'SingleCurrency',
   initialState,
-  reducers: {
-    reqLoadExchange: (state) => {
-      state.isLoadingExhange = true;
-    },
-    finishLoadExchange: (state) => {
-      state.isLoadingExhange = false;
-    },
-    clearAll: (state) => {
-      state.data = [];
-      state.isFetching = false;
-      state.isFetchError = null;
-      state.isLoadingExhange = false;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getSingleCurrency.pending, (state) => {
-        state.isFetching = true;
-      })
-      .addCase(getSingleCurrency.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.isFetching = false;
-        state.isFetchError = null;
-      })
-      .addCase(getSingleCurrency.rejected, (state, action) => {
-        state.data = [];
-        state.isFetching = false;
-        state.isFetchError = action.payload;
-      });
+      .addCase(getSingleCurrency.pending, (state) => ({
+        ...state,
+        isFetching: true,
+      }))
+      .addCase(getSingleCurrency.fulfilled, (state, action) => ({
+        ...state,
+        data: action.payload,
+        isFetching: false,
+        isFetchError: null,
+      }))
+      .addCase(getSingleCurrency.rejected, (state, action) => ({
+        ...state,
+        data: [],
+        isFetching: false,
+        isFetchError: action.payload,
+      }));
   },
 });
 
 export const SinglecurrencyReducer = SingleCurrencySlice.reducer;
-export const { reqLoadExchange, finishLoadExchange, clearAll } =
-  SingleCurrencySlice.actions;
+export const { reqLoadExchange, finishLoadExchange, clearAll } = SingleCurrencySlice.actions;
