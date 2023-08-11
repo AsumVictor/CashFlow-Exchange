@@ -42,7 +42,7 @@ function Header() {
         ))}
       </nav>
 
-      <div  className="px-2 py-1 rounded-md bg-white font-bold text-primary">
+      <div className="px-2 py-1 rounded-md bg-white font-bold text-primary">
         <BsFillGearFill />
       </div>
     </header>
