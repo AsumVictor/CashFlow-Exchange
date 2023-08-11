@@ -8,11 +8,15 @@ import {
   CurrencyDetailPage,
   FavoritePage,
   ConversionPage,
-} from "./Routes.js";
-import PageLayout from "./layout/PageLayout.js";
+} from "./Routes";
+import PageLayout from "./layout/PageLayout";
+import { getCurrencies } from "./redux/currency/currencySlice";
 
 function App() {
   const dispatch = useDispatch();
+useEffect(() => {
+ dispatch(getCurrencies())
+}, [])
 
   return (
     <BrowserRouter>

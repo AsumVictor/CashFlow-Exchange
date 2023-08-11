@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import BASEURL from "../../../BASEURL";
+import BASEURL from "../../api/BASEURL";
 
 export const getCurrencies = createAsyncThunk("currency/get", async () => {
   try {
     const response = await fetch(`${BASEURL}/latest/currencies.json`);
-    const data = response.json();
+    const data = await response.json();
     return data;
   } catch (error) {
     const errorMessage = error.response
@@ -16,7 +16,7 @@ export const getCurrencies = createAsyncThunk("currency/get", async () => {
 
 const initialState = {
   data: {},
-  isFetching: false,
+  isFetching: true,
   isFetchError: null,
 };
 
@@ -27,20 +27,18 @@ const CurrencySlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCurrencies.pending, (state) => {
-        data = {};
-        isFetching = true;
-        isFetchError = null;
+        state.isFetching = true;
       })
       .addCase(getCurrencies.fulfilled, (state, action) => {
-        data = action.payload;
-        isFetching = false;
-        isFetchError = null;
+        state.data = action.payload;
+        state.isFetching = false;
+        state.isFetchError = null;
       })
       .addCase(getCurrencies.rejected, (state, action) => {
-        isFetching = false;
-        isFetchError = action.payload;
+        state.isFetching = false;
+        state.isFetchError = action.payload;
       });
   },
 });
 
-export const currencyReducer = createSlice.reducer
+export const currencyReducer = CurrencySlice.reducer;
