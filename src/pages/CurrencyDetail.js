@@ -9,13 +9,12 @@ import {
   convertWeekAgo,
   convertYearAgo,
 } from "../helpers/timeConvert";
+import Loader from "../components/loader";
 
 function CurrencyDetail() {
   const param = useParams();
   const dispatch = useDispatch();
-  const { data: allCurrencies, isFetching: loading } = useSelector(
-    (state) => state.allCurrencies
-  );
+  const { data: allCurrencies } = useSelector((state) => state.allCurrencies);
   const currentCurrency = allCurrencies.find((i) => i.code === param.code);
   const { data, isFetching, isFetchError } = useSelector(
     (state) => state.currency
@@ -74,14 +73,6 @@ function CurrencyDetail() {
     });
   };
 
-  if (loading || isFetching) {
-    return (
-      <>
-        <h2>LOADING...</h2>
-      </>
-    );
-  }
-
   return (
     <div className="w-full pb-20">
       <Link
@@ -129,6 +120,7 @@ function CurrencyDetail() {
           <input
             type="date"
             name="customDate"
+            max={new Date().toISOString().split("T")[0]}
             value={currentDate.active === 5 && currentDate.date}
             className="outline-0 rounded-md font-semibold px-2 text-[15px] py-1 text-primary"
             onChange={(e) => {
@@ -140,12 +132,15 @@ function CurrencyDetail() {
           />
         </div>
       </div>
-
-      <div className="w-full py-2 grid grid-cols-2 mt-5">
-        {data?.map((currency) => (
-          <SingleExchangeCard name={currency.code} rate={currency.rate} />
-        ))}
-      </div>
+      {isFetching ? (
+        <Loader />
+      ) : (
+        <div className="w-full py-2 grid grid-cols-2 mt-5">
+          {data?.map((currency) => (
+            <SingleExchangeCard name={currency.code} rate={currency.rate} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

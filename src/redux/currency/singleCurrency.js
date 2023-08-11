@@ -26,7 +26,7 @@ export const getSingleCurrency = createAsyncThunk(
 );
 
 const initialState = {
-  data: {},
+  data: [],
   isFetching: true,
   isFetchError: null,
   isLoadingExhange: false,
