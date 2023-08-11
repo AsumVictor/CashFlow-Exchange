@@ -6,8 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import {
   HomePage,
   CurrencyDetailPage,
-  FavoritePage,
-  ConversionPage,
 } from './Routes';
 import PageLayout from './layout/PageLayout';
 import { getCurrencies } from './redux/currency/currencySlice';
@@ -24,8 +22,6 @@ function App() {
         <Route element={<PageLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/:code" element={<CurrencyDetailPage />} />
-          <Route path="/favorite" element={<FavoritePage />} />
-          <Route path="/conversion" element={<ConversionPage />} />
         </Route>
       </Routes>
       <ToastContainer
