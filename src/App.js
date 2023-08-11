@@ -1,22 +1,22 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   HomePage,
   CurrencyDetailPage,
   FavoritePage,
   ConversionPage,
-} from "./Routes";
-import PageLayout from "./layout/PageLayout";
-import { getCurrencies } from "./redux/currency/currencySlice";
+} from './Routes';
+import PageLayout from './layout/PageLayout';
+import { getCurrencies } from './redux/currency/currencySlice';
 
 function App() {
   const dispatch = useDispatch();
-useEffect(() => {
- dispatch(getCurrencies())
-}, [])
+  useEffect(() => {
+    dispatch(getCurrencies());
+  }, []);
 
   return (
     <BrowserRouter>

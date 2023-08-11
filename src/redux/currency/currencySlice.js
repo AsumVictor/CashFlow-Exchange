@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import BASEURL from "../../api/BASEURL";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import BASEURL from '../../api/BASEURL';
 
-export const getCurrencies = createAsyncThunk("currency/get", async () => {
+export const getCurrencies = createAsyncThunk('currency/get', async () => {
   try {
     const response = await fetch(`${BASEURL}/latest/currencies.json`);
     const data = await response.json();
@@ -25,7 +25,7 @@ const initialState = {
 };
 
 const CurrencySlice = createSlice({
-  name: "Currency",
+  name: 'Currency',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
