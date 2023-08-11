@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 
 function PageLayout() {
   return (
-    <div className="w-full h-screen overflow-y-auto overflow-x-hidden">
+    <div className="w-full h-screen overflow-y-auto overflow-x-hidden bg-primary_light">
       <Header />
       <Outlet />
       <Footer /> 

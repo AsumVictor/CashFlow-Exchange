@@ -21,8 +21,8 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full relative py-1 bg-primary_light h-[1.5cm] flex flex-row items-center px-2 400px:px-10 justify-between">
-      <button className="text-white" onClick={() => setIsOpen((prev) => !prev)}>
+    <header className="w-full relative py-1 bg-primary h-[1.5cm] flex flex-row items-center px-2 400px:px-10 justify-between">
+      <button className="text-white 600px:hidden" onClick={() => setIsOpen((prev) => !prev)}>
         {isOpen ? <HiX size={30} /> : <HiMenuAlt2 size={30} />}
       </button>
 
@@ -31,7 +31,7 @@ function Header() {
       <nav
         className={`${
           isOpen ? "flex" : "hidden"
-        } absolute top-[1.6cm] 600px:top-0 bg-primary_light 600px:relative 600px:flex 600px:flex-row gap-3 flex-col px-10 py-10 w-10/12 600px:w-auto 600px:px-0 600px:py-0 rounded-md`}
+        } absolute top-[1.6cm] 600px:top-0 bg-primary 600px:relative 600px:flex 600px:flex-row gap-3 flex-col px-10 py-10 w-10/12 600px:w-auto 600px:px-0 600px:py-0 rounded-md`}
       >
         {navLinks.map((link) => (
           <NavLink
