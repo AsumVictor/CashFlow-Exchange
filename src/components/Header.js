@@ -22,7 +22,10 @@ function Header() {
 
   return (
     <header className="w-full relative py-1 bg-primary h-[1.5cm] flex flex-row items-center px-2 400px:px-10 justify-between">
-      <button className="text-white 600px:hidden" onClick={() => setIsOpen((prev) => !prev)}>
+      <button
+        className="text-white 600px:hidden"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
         {isOpen ? <HiX size={30} /> : <HiMenuAlt2 size={30} />}
       </button>
 
@@ -35,6 +38,7 @@ function Header() {
       >
         {navLinks.map((link) => (
           <NavLink
+            key={link.href}
             to={link.href}
             onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
