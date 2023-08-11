@@ -4,6 +4,4 @@ import CurrencyDetailPage from './pages/CurrencyDetail';
 export {
   HomePage,
   CurrencyDetailPage,
-  FavoritePage,
-  ConversionPage,
 };

@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { HiMenuAlt2, HiX } from 'react-icons/hi';
+import { BsFillGearFill } from 'react-icons/bs';
 
 function Header() {
   const navLinks = [
     {
       href: '/',
       label: 'All curencies',
-    },
-    {
-      href: '/conversion',
-      label: 'Convert Curency',
-    },
-    {
-      href: '/favorite',
-      label: 'Favorites',
     },
   ];
 
@@ -49,9 +42,9 @@ function Header() {
         ))}
       </nav>
 
-      <button type="button" className="px-2 py-1 rounded-md bg-white font-bold text-primary">
-        Sign in
-      </button>
+      <div  className="px-2 py-1 rounded-md bg-white font-bold text-primary">
+        <BsFillGearFill />
+      </div>
     </header>
   );
 }
