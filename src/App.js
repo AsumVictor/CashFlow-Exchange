@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route element={<PageLayout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/:id" element={<CurrencyDetailPage />} />
+          <Route path="/:code" element={<CurrencyDetailPage />} />
           <Route path="/favorite" element={<FavoritePage />} />
           <Route path="/conversion" element={<ConversionPage />} />
         </Route>
