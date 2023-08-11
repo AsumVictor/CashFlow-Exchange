@@ -9,6 +9,9 @@ export const getSingleCurrency = createAsyncThunk(
         `${BASEURL}/${param.date}/currencies/${param.code}.json`
       );
       const data = await response.json();
+      if(typeof data === "object") {
+        
+      }
       const currencyArray = Object.entries(Object.values(data)[1]).map(
         ([code, rate]) => ({
           code,
@@ -43,7 +46,7 @@ const SingleCurrencySlice = createSlice({
       state.isLoadingExhange = false;
     },
     clearAll: (state) => {
-      state.data = {};
+      state.data = [];
       state.isFetching = false;
       state.isFetchError = null;
       state.isLoadingExhange = false;
@@ -60,6 +63,7 @@ const SingleCurrencySlice = createSlice({
         state.isFetchError = null;
       })
       .addCase(getSingleCurrency.rejected, (state, action) => {
+        state.data = [];
         state.isFetching = false;
         state.isFetchError = action.payload;
       });

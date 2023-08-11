@@ -16,10 +16,9 @@ function CurrencyDetail() {
   const dispatch = useDispatch();
   const { data: allCurrencies } = useSelector((state) => state.allCurrencies);
   const currentCurrency = allCurrencies.find((i) => i.code === param.code);
-  const { data, isFetching, isFetchError } = useSelector(
+  const { data, isFetching } = useSelector(
     (state) => state.currency
   );
-
   const [currentDate, setCurrentDate] = useState({
     date: "latest",
     active: 1,
@@ -136,9 +135,19 @@ function CurrencyDetail() {
         <Loader />
       ) : (
         <div className="w-full py-2 grid grid-cols-2 mt-5">
-          {data?.map((currency) => (
-            <SingleExchangeCard name={currency.code} rate={currency.rate} />
-          ))}
+          {Array.isArray(data) ? (
+            data.map((currency) => (
+              <SingleExchangeCard
+                name={currency.code}
+                rate={currency.rate}
+                key={currency.name}
+              />
+            ))
+          ) : (
+            <div className="h-[5cm] col-span-full text-white w-full flex justify-center items-center">
+              <h2>{`Opps! (: Nothing to display about`}</h2>
+            </div>
+          )}
         </div>
       )}
     </div>
