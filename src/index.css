@@ -14,7 +14,8 @@
   color: var(--primary-color-light);
 }
 
-.currency-card:nth-child(even) {
+.currency-card:nth-of-type(4n + 2),
+.currency-card:nth-of-type(4n + 3) {
   background-color: var(--primary-color-light);
   color: var(--primary-color);
 }

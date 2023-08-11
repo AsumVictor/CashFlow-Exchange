@@ -8,7 +8,7 @@ function Home() {
     (state) => state.allCurrencies
   );
 
-console.log(data, isFetching, isFetchError);
+  console.log(data);
 
   return (
     <div className="w-full py-2">
@@ -19,8 +19,9 @@ console.log(data, isFetching, isFetchError);
         </h1>
       </div>
       <div className="w-full py-2 grid grid-cols-2 md:px-10">
-        <CurrencyCard />
-        <CurrencyCard />
+        {data.map(({ code, name }) => (
+          <CurrencyCard currencyName={name} key={name} currencySymbol={code} />
+        ))}
       </div>
     </div>
   );

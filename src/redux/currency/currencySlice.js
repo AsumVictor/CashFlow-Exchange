@@ -5,7 +5,11 @@ export const getCurrencies = createAsyncThunk("currency/get", async () => {
   try {
     const response = await fetch(`${BASEURL}/latest/currencies.json`);
     const data = await response.json();
-    return data;
+    const currencyArray = Object.entries(data).map(([code, name]) => ({
+      code,
+      name,
+    }));
+    return currencyArray;
   } catch (error) {
     const errorMessage = error.response
       ? error.response.data.error.message
@@ -15,7 +19,7 @@ export const getCurrencies = createAsyncThunk("currency/get", async () => {
 });
 
 const initialState = {
-  data: {},
+  data: [],
   isFetching: true,
   isFetchError: null,
 };

@@ -8,9 +8,9 @@ function CurrencyCard({ currencyName, currencySymbol }) {
       <Link className="absolute right-4 top-2">
         <BsArrowRightCircle color="white" size={30} />
       </Link>
-      <h3 className="absolute right-4 bottom-2 text-white">
-        <p className="text-2xl font-semibold">{currencyName}</p>
-        <p>{currencyName?.slice(0, 1)}</p>
+      <h3 className="absolute right-4 bottom-2 text-white text-right">
+        <p className="text-xl 400px:px-2 500px:text-2xl font-semibold">{currencyName}</p>
+        <p>{currencyName?.slice(0, 2)}</p>
       </h3>
       <div>
         <h3 className="text-4xl 500px:text-7xl font-bold uppercase">
