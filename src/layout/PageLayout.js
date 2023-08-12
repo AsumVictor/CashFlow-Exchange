@@ -1,14 +1,14 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function PageLayout() {
   return (
-    <div className="w-full h-screen overflow-y-auto overflow-x-hidden">
+    <div className="w-full h-screen overflow-y-auto overflow-x-hidden bg-primary_light">
       <Header />
       <Outlet />
-      <Footer /> 
+      <Footer />
     </div>
   );
 }
