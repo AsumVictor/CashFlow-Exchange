@@ -97,9 +97,7 @@ function CurrencyDetail() {
 
       <div className="w-full text-[18px] text-white py-2 bg-primary mt-1 flex flex-row gap-1 items-center font-semibold px-10">
         Exchange rates of
-        {' '}
         {currentCurrency.name}
-        {' '}
         (
         {currentCurrency.code}
         )

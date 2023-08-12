@@ -7,7 +7,6 @@ function Home() {
   const { data, isFetchError } = useSelector(
     (state) => state.allCurrencies,
   );
-
   if (isFetchError) {
     return (
       <>

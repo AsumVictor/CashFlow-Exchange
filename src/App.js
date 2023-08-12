@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {
   HomePage,
   CurrencyDetailPage,
@@ -24,18 +22,6 @@ function App() {
           <Route path="/:code" element={<CurrencyDetailPage />} />
         </Route>
       </Routes>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </BrowserRouter>
   );
 }
