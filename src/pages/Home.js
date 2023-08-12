@@ -4,18 +4,9 @@ import HeroSection from '../components/HeroSection';
 import CurrencyCard from '../components/CurrencyCard';
 
 function Home() {
-  const { data, isFetching, isFetchError } = useSelector(
+  const { data, isFetchError } = useSelector(
     (state) => state.allCurrencies,
   );
-
-  if (isFetching) {
-    return (
-      <>
-        <h1>LOADING...</h1>
-      </>
-    );
-  }
-
   if (isFetchError) {
     return (
       <>
@@ -38,7 +29,7 @@ function Home() {
         </h1>
       </div>
       <div className="w-full py-2 grid grid-cols-2 md:px-10">
-        {data.slice(0, 10).map(({ code, name }) => (
+        {data.map(({ code, name }) => (
           <CurrencyCard currencyName={name} key={code} currencySymbol={code} />
         ))}
       </div>

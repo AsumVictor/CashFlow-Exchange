@@ -25,6 +25,9 @@
 
 Welcome to CashFlow Exchange, your ultimate currency exchange as my Microverse capstone project! CashFlow is a powerful and user-friendly mobile application designed to provide you with real-time currency exchange rates and seamless currency conversion capabilities.
 
+## Poject presentation 
+You can watch a 5 min video presentation of the project [here](https://www.loom.com/share/ca8ac5869ca040b3bcb62ea42ad10c7b?sid=c38c9a36-a9fd-4587-922d-a9501c435806)
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -51,7 +54,7 @@ Welcome to CashFlow Exchange, your ultimate currency exchange as my Microverse c
 
   ## Live demo <a name="key-features"></a>
 
-I have deployed the project of github. [Click to view the live version of my project](https://iabookhaven.onrender.com) 
+I have deployed the project of github. [Click to view the live version of my project](https://xiasumcashflow.onrender.com) 
 
 ## 💻 Getting Started <a name="getting-started"></a>
 

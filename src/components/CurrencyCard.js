@@ -9,12 +9,12 @@ function CurrencyCard({ currencyName, currencySymbol }) {
       to={`/${currencySymbol}`}
       className="currency-card relative w-full flex justify-center items-center px-2 py-2 h-[6cm]"
     >
-      <Link
-        to={`/${currencySymbol}`}
+      <button
+        type="button"
         className="absolute right-4 top-2"
       >
         <BsArrowRightCircle color="white" size={30} />
-      </Link>
+      </button>
       <h3 className="absolute right-4 bottom-2 text-white text-right">
         <p className="text-xl 400px:px-2 500px:text-2xl font-semibold">
           {currencyName}

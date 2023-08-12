@@ -1,13 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {
   HomePage,
   CurrencyDetailPage,
-  FavoritePage,
-  ConversionPage,
 } from './Routes';
 import PageLayout from './layout/PageLayout';
 import { getCurrencies } from './redux/currency/currencySlice';
@@ -23,23 +19,9 @@ function App() {
       <Routes>
         <Route element={<PageLayout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/:id" element={<CurrencyDetailPage />} />
-          <Route path="/favorite" element={<FavoritePage />} />
-          <Route path="/conversion" element={<ConversionPage />} />
+          <Route path="/:code" element={<CurrencyDetailPage />} />
         </Route>
       </Routes>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </BrowserRouter>
   );
 }
