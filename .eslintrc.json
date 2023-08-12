@@ -20,6 +20,7 @@
       "import/no-unresolved": "off",
       "no-shadow": "off"
     },
+    
     "overrides": [
       {
          // feel free to replace with your preferred file pattern - eg. 'src/**/*Slice.js' or 'redux/**/*Slice.js'
